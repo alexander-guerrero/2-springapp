@@ -5,21 +5,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<bean id="admin" class="com.alex.Administrador">
-		<!-- Uso de Constructor -->
-		<!-- <constructor-arg name="idAdm" value="333"></constructor-arg> -->
-		<!-- <constructor-arg name="nombre" value="Cristian"></constructor-arg> -->
-
-		<!-- Uso de Métodos Setters -->
-		<property name="idAdm" value="777"></property>
-		<property name="nombre" value="Alexander"></property>
-		<!-- <property name="direccion" ref="direccion"></property> -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/springbd"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
 	</bean>
 
-	<!-- <bean id="direccion" class="com.alex.Direccion"> -->
-		<!-- <constructor-arg name="calle" value="Calle 7"></constructor-arg> -->
-		<!-- <constructor-arg name="cp" value="1234"></constructor-arg> -->
-	<!-- </bean> -->
-	
 	<context:component-scan base-package="com.alex"></context:component-scan>
+
 </beans>
