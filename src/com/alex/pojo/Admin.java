@@ -1,46 +1,50 @@
-package com.alex;
+package com.alex.pojo;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.sql.Timestamp;
 
-public class Administrador {
+public class Admin {
 
 	private int idAdm;
 	private String nombre;
+	private String cargo;
+	private Timestamp fechaCreacion;
 
-	// Anotación en la propiedad
-	// @Autowired
-	private Direccion direccion;
-
-	public Administrador() {
-
-	}
-
-	public Administrador(int idAdm, String nombre) {
-		this.idAdm = idAdm;
-		this.nombre = nombre;
+	public int getIdAdm() {
+		return idAdm;
 	}
 
 	public void setIdAdm(int idAdm) {
 		this.idAdm = idAdm;
 	}
 
+	public String getNombre() {
+		return nombre;
+	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	// Anotación en el método Setter
-	@Autowired
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+
+	public Timestamp getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Timestamp fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 
 	@Override
 	public String toString() {
-		return "Administrador [idAdm=" + idAdm + ", nombre=" + nombre + ", direccion=" + direccion + "]";
-	}
-
-	public void imprimirDireccion() {
-		System.out.println("Av. Santa Rosa 700");
+		return "Administrador [idAdm=" + idAdm + ", nombre=" + nombre + ", cargo=" + cargo + ", fechaCreacion="
+				+ fechaCreacion + "]";
 	}
 
 }
