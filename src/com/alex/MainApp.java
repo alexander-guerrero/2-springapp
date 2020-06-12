@@ -2,6 +2,7 @@ package com.alex;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -26,6 +27,12 @@ public class MainApp {
 
 		try {
 			adminDao.save(admin);
+
+			List<Admin> admins = adminDao.findAll();
+
+			for (Admin adm : admins) {
+				System.out.println(adm);
+			}
 		} catch (CannotGetJdbcConnectionException ex) {
 			ex.printStackTrace();
 		} catch (DataAccessException ex) {
