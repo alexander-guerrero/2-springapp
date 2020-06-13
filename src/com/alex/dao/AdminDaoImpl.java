@@ -72,4 +72,19 @@ public class AdminDaoImpl implements AdminDao {
 				new MapSqlParameterSource("_nombre", "%" + nombre + "%"), new AdminRowMapper());
 	}
 
+	@Override
+	public boolean update(Admin admin) {
+
+		return jdbcTemplate.update(
+				"UPDATE Admin SET nombre=:nombre, cargo=:cargo, fechaCreacion=:fechaCreacion WHERE idAdm=:idAdm",
+				new BeanPropertySqlParameterSource(admin)) == 1;
+	}
+
+	@Override
+	public boolean delete(int id) {
+
+		return jdbcTemplate.update("DELETE FROM Admin WHERE idAdm=:_idAdm",
+				new MapSqlParameterSource("_idAdm", id)) == 1;
+	}
+
 }

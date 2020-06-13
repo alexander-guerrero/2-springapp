@@ -20,13 +20,13 @@ public class MainApp {
 
 		AdminDao adminDao = (AdminDao) applicationContext.getBean("adminDao");
 
-		Admin admin = new Admin();
-		admin.setNombre("Jorge");
-		admin.setCargo("Gerente");
-		admin.setFechaCreacion(new Timestamp(new Date().getTime()));
+//		Admin admin = new Admin();
+//		admin.setNombre("Jorge");
+//		admin.setCargo("Gerente");
+//		admin.setFechaCreacion(new Timestamp(new Date().getTime()));
 
 		try {
-			adminDao.save(admin);
+//			adminDao.save(admin);
 
 //			List<Admin> admins = adminDao.findAll();
 
@@ -34,8 +34,26 @@ public class MainApp {
 //				System.out.println(adm);
 //			}
 
-			System.out.println(adminDao.findById(7));
-			System.out.println(adminDao.findByNombre("SA"));
+//			System.out.println(adminDao.findById(7));
+//			System.out.println(adminDao.findByNombre("SA"));
+
+			// Actualizar
+			Admin admin = adminDao.findById(5);
+			System.out.println("Original " + admin);
+			admin.setNombre("Antonio");
+			admin.setCargo("Consultor");
+
+			if (adminDao.update(admin)) {
+				System.out.println("Actualizado " + admin);
+			}
+
+			// Eliminar
+			Admin admin2 = adminDao.findById(2);
+			System.out.println("Se eliminará " + admin2);
+			if (adminDao.delete(admin2.getIdAdm())) {
+				System.out.println("Eliminado " + admin2);
+			}
+
 		} catch (CannotGetJdbcConnectionException ex) {
 			ex.printStackTrace();
 		} catch (DataAccessException ex) {
