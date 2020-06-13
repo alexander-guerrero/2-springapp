@@ -8,5 +8,7 @@ public interface AdminDao {
 	
 	public boolean save(Admin admin);
 	public List<Admin> findAll();
+	public Admin findById(int id);
+	public List<Admin> findByNombre(String nombre);
 
 }

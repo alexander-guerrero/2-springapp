@@ -21,18 +21,21 @@ public class MainApp {
 		AdminDao adminDao = (AdminDao) applicationContext.getBean("adminDao");
 
 		Admin admin = new Admin();
-		admin.setNombre("Cristian");
+		admin.setNombre("Jorge");
 		admin.setCargo("Gerente");
 		admin.setFechaCreacion(new Timestamp(new Date().getTime()));
 
 		try {
 			adminDao.save(admin);
 
-			List<Admin> admins = adminDao.findAll();
+//			List<Admin> admins = adminDao.findAll();
 
-			for (Admin adm : admins) {
-				System.out.println(adm);
-			}
+//			for (Admin adm : admins) {
+//				System.out.println(adm);
+//			}
+
+			System.out.println(adminDao.findById(7));
+			System.out.println(adminDao.findByNombre("SA"));
 		} catch (CannotGetJdbcConnectionException ex) {
 			ex.printStackTrace();
 		} catch (DataAccessException ex) {
