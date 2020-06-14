@@ -12,5 +12,6 @@ public interface AdminDao {
 	public List<Admin> findByNombre(String nombre);
 	public boolean update(Admin admin);
 	public boolean delete(int id);
+	public int[] saveAll(List<Admin> admins);
 
 }

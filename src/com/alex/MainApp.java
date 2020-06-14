@@ -1,6 +1,7 @@
 package com.alex;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,21 +38,34 @@ public class MainApp {
 //			System.out.println(adminDao.findById(7));
 //			System.out.println(adminDao.findByNombre("SA"));
 
-			// Actualizar
-			Admin admin = adminDao.findById(5);
-			System.out.println("Original " + admin);
-			admin.setNombre("Antonio");
-			admin.setCargo("Consultor");
-
-			if (adminDao.update(admin)) {
-				System.out.println("Actualizado " + admin);
-			}
-
-			// Eliminar
-			Admin admin2 = adminDao.findById(2);
-			System.out.println("Se eliminará " + admin2);
-			if (adminDao.delete(admin2.getIdAdm())) {
-				System.out.println("Eliminado " + admin2);
+//			// Actualizar
+//			Admin admin = adminDao.findById(5);
+//			System.out.println("Original " + admin);
+//			admin.setNombre("Antonio");
+//			admin.setCargo("Consultor");
+//
+//			if (adminDao.update(admin)) {
+//				System.out.println("Actualizado " + admin);
+//			}
+//
+//			// Eliminar
+//			Admin admin2 = adminDao.findById(2);
+//			System.out.println("Se eliminará " + admin2);
+//			if (adminDao.delete(admin2.getIdAdm())) {
+//				System.out.println("Eliminado " + admin2);
+//			}
+			
+			// Obtener la fecha actual
+			Timestamp ts = new Timestamp(new Date().getTime());
+			
+			// Batch Update (Insert, Update o Delete masivo)
+			List<Admin> admins = new ArrayList<Admin>();
+			admins.add(new Admin("Luis", "Arquitecto de software", ts));
+			admins.add(new Admin("Rafael", "Jefe de proyectos", ts));
+			admins.add(new Admin("José", "DBA", ts));
+			int[] numFilasAfectadas = adminDao.saveAll(admins);
+			for (int i : numFilasAfectadas) {
+				System.out.println("Se afectó " + i + " fila(s).");
 			}
 
 		} catch (CannotGetJdbcConnectionException ex) {
