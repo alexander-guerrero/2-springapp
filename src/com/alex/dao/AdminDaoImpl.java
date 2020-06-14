@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alex.pojo.Admin;
 import com.alex.pojo.AdminRowMapper;
@@ -89,12 +90,13 @@ public class AdminDaoImpl implements AdminDao {
 				new MapSqlParameterSource("_idAdm", id)) == 1;
 	}
 
+	@Transactional
 	@Override
 	public int[] saveAll(List<Admin> admins) {
 		SqlParameterSource[] batchArgs = SqlParameterSourceUtils.createBatch(admins.toArray());
 
 		return jdbcTemplate.batchUpdate(
-				"INSERT INTO Admin (nombre, cargo, fechaCreacion) VALUES (:nombre, :cargo, :fechaCreacion)", batchArgs);
+				"INSERT INTO Admin (idAdm, nombre, cargo, fechaCreacion) VALUES (:idAdm, :nombre, :cargo, :fechaCreacion)", batchArgs);
 	}
 
 }

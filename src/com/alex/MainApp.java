@@ -60,9 +60,9 @@ public class MainApp {
 			
 			// Batch Update (Insert, Update o Delete masivo)
 			List<Admin> admins = new ArrayList<Admin>();
-			admins.add(new Admin("Luis", "Arquitecto de software", ts));
-			admins.add(new Admin("Rafael", "Jefe de proyectos", ts));
-			admins.add(new Admin("José", "DBA", ts));
+			admins.add(new Admin(19, "Lourdes", "UX Designer", ts));
+			admins.add(new Admin(20, "Jessica", "QA", ts));
+			admins.add(new Admin(13, "Cecilia", "Backend Developer", ts)); // id ya existe
 			int[] numFilasAfectadas = adminDao.saveAll(admins);
 			for (int i : numFilasAfectadas) {
 				System.out.println("Se afectó " + i + " fila(s).");

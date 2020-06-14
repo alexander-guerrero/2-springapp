@@ -13,6 +13,13 @@ public class Admin {
 
 	}
 
+	public Admin(int idAdm, String nombre, String cargo, Timestamp fechaCreacion) {
+		this.idAdm = idAdm;
+		this.nombre = nombre;
+		this.cargo = cargo;
+		this.fechaCreacion = fechaCreacion;
+	}
+
 	public Admin(String nombre, String cargo, Timestamp fechaCreacion) {
 		this.nombre = nombre;
 		this.cargo = cargo;
